@@ -1,10 +1,9 @@
 <?php
 include ("db.php");
 
-
-
 $sql = "SELECT * FROM role";
 $result = $conn->query($sql);
+
 ?>
 
 
@@ -20,11 +19,7 @@ include ("head.php");
 
         <div class="col-12 col-lg-6">
             <div class="row">
-                <div class="col-6">
-                    <a href="user_add.php" class="btn btn-primary mb-1">
-                        Add
-                    </a>
-                </div>
+
                 <div class="col-6">
                     <h4>
                         List of the role
@@ -34,7 +29,9 @@ include ("head.php");
             </div>
 
 
-
+            <div class="mb-3">
+                <a href="create_role.php" class="btn btn-primary">Create</a>
+            </div>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -44,6 +41,7 @@ include ("head.php");
                         <th>
                             Name
                         </th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,6 +51,10 @@ include ("head.php");
                             echo "<tr>";
                             echo "<td>" . $row["id"] . "</td>";
                             echo "<td>" . $row["name"] . "</td>";
+                            echo "<td>";
+                            echo "<a href='edit_role.php?id=" . $row["id"] . "' class='btn btn-sm btn-primary mr-2'>Edit</a>";
+                            echo "<a href='delete_role.php?id=" . $row["id"] . "' class='btn btn-sm btn-danger' onclick='return confirm(\"Are you sure you want to delete this role?\");'>Delete</a>";
+                            echo "</td>";
                             echo "</tr>";
 
                         }
